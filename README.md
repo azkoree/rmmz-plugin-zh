@@ -15,7 +15,9 @@
 | 插件名 | 插件作者 | 插件描述 | 完成度 | 备注 |
 |---|---|---|---|---|
 | AbilityBoard | Basu | 实装能力值提升面板 | 插件参数✅ | |
-| DrawGaugeMaxValue | あわやまたな | 显示计量条的最大值。 | ✅ | |
 | CBR_EroStatus | COBRA(ONEONE1)  | 增加一个可显示各种状态的界面 | ✅ | 作者网站有范例参考 |
 | CBR_nameMessage | COBRA(ONEONE1)  | 优化输入文本体验 | ✅ | |
-
+| DrawGaugeMaxValue | あわやまたな | 显示计量条的最大值。 | ✅ | |
+| LL_MenuScreenBase | ルルの教会 | 菜单画面设定立绘的基础插件。 | ✅ | 仅文本汉化，[本体下载](https://nine-yusha.com/plugin-menuscreen/) |
+| TorigoyaMZ_NotifyMessage | Ruたん | 通知信息插件 | ✅ |  |
+| TorigoyaMZ_NotifyMessage_AddonGetItem | Ruたん | 通知信息追加：显示道具获取 | ✅ |  |

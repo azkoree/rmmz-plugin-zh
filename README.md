@@ -1,6 +1,6 @@
 # rmmz-plugin-zh
 
-一些RPG Maker MZ插件的自用汉化
+一些RPG Maker MZ插件的自用汉化，大部分是一些小插件，因为大插件我怕不小心乱动导致整个插件都用不了了
 
 ~~似乎是很多人在做的工作，但是我做了也没什么问题吧~~
 
@@ -15,5 +15,7 @@
 | 插件名 | 插件作者 | 插件描述 | 完成度 | 备注 |
 |---|---|---|---|---|
 | AbilityBoard | Basu | 实装能力值提升面板 | 插件参数✅ | |
-| CBR_nameMessage | COBRA(ONEONE1)  | 优化输入文本体验 | 插件参数，帮助✅ | |
-| CBR_EroStatus | COBRA(ONEONE1)  | 增加一个可显示各种状态的界面 | 插件参数，帮助✅ | 虽然叫这个名字，但全年龄游戏也可以使用，建议去作者网站下载范例参考 |
+| DrawGaugeMaxValue | あわやまたな | 显示计量条的最大值。 | ✅ | |
+| CBR_EroStatus | COBRA(ONEONE1)  | 增加一个可显示各种状态的界面 | ✅ | 作者网站有范例参考 |
+| CBR_nameMessage | COBRA(ONEONE1)  | 优化输入文本体验 | ✅ | |
+

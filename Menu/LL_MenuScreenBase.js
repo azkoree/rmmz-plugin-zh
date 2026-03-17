@@ -68,7 +68,7 @@
  *
  * @param onSpbPlugin
  * @text 联动战斗状态立绘插件
- * @desc ※未使用该项目
+ * @desc ※不使用该项目
  *
  * @param onSpbPluginEnable
  * @text 联动立绘列表

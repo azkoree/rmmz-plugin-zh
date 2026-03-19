@@ -25,6 +25,7 @@
 | 插件名 | 插件作者 | 插件描述 | 完成度 | 备注 |
 |---|---|---|---|---|
 | CBR_nameMessage | COBRA(ONEONE1)  | 优化输入文本体验 | ✅ | |
+| NRP_MessageWindow | 砂川赳  | 调整对话框 | ✅ | |
 | TorigoyaMZ_NotifyMessage | Ruたん | 通知信息插件 | ✅ |  |
 | TorigoyaMZ_NotifyMessage_AddonGetItem | Ruたん | 通知信息追加：显示道具获取 | ✅ |  |
 
@@ -40,5 +41,7 @@
 
 | 插件名 | 插件作者 | 插件描述 | 完成度 | 备注 |
 |---|---|---|---|---|
-| AbilityBoard | Basu | 实装能力值提升面板 | 插件参数✅ | |
+| AbilityBoard | Basu | 实装能力值提升面板 | 插件参数✅ | 插件帮助基本上是把插件参数再写一遍，所以不翻了 |
 | CBR_EroStatus | COBRA(ONEONE1)  | 增加一个可显示各种状态的界面 | ✅ | 作者网站有范例参考 |
+| SceneCustomMenu | トリアコンタン | 自定义菜单创建插件 | ✅ | 比较复杂的插件，但是很强大，可以多多搜索日语教程学习 |
+| SceneCustomMenu | トリアコンタン | 游戏内用语辞典界面 | ✅ |  |

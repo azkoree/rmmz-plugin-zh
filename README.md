@@ -8,6 +8,8 @@
 
 本仓库汉化的插件基本都允许修改分发，付费/不允许分发插件只会提供参数和帮助文本的汉化，请自己替换
 
+
+
 ## 利用规约
 
 请参考原插件网站和插件说明给出的利用规约。
@@ -33,8 +35,8 @@
 | 插件名 | 插件作者 | 插件描述 | 完成度 | 备注 |
 |---|---|---|---|---|
 | [CBR_nameMessage](https://github.com/azkoree/rmmz-plugin-zh/blob/main/Map/CBR_nameMessage.js) | COBRA(ONEONE1)  | 在对话开头输入【】，【】内会作为姓名框显示 | ✅ | |
-| [LL_StandingPictures](https://github.com/azkoree/rmmz-plugin-zh/blob/main/Map/LL_StandingPictures.js) | ルルの教会  | 可以用控制符在对话中显示立绘的插件，一次可以显示8个立绘，内置了多种动效 | ✅ | [本体地址](https://nine-yusha.com/plugin-spicture/) |
-| [NRP_MessageWindow](https://github.com/azkoree/rmmz-plugin-zh/blob/main/Map/NRP_MessageWindow.js) | 砂川赳  | 调整对话框的宽度，添加遮罩等等 | ✅ | |
+| [LL_StandingPictures](https://github.com/azkoree/rmmz-plugin-zh/blob/main/Map/LL_StandingPictures.js) | ルルの教会 | 可以用控制符在对话中显示立绘的插件，一次可以显示8个立绘，内置了多种动效 | ✅ | [本体地址](https://nine-yusha.com/plugin-spicture/) |
+| [NRP_MessageWindow](https://github.com/azkoree/rmmz-plugin-zh/blob/main/Map/NRP_MessageWindow.js) | 砂川赳 | 调整对话框的宽度，添加遮罩等等 | ✅ | |
 | [TorigoyaMZ_NotifyMessage](https://github.com/azkoree/rmmz-plugin-zh/blob/main/Map/TorigoyaMZ_NotifyMessage.js) | Ruたん | 在画面显示通知信息，是个人比较喜欢的样式 | ✅ | 需要[Torigoya_FrameTween](https://torigoya-plugin.rutan.dev/base/tween/) |
 | [TorigoyaMZ_NotifyMessage_AddonGetItem](https://github.com/azkoree/rmmz-plugin-zh/blob/main/Map/TorigoyaMZ_NotifyMessage_AddonGetItem.js) | Ruたん | 上面这个插件的追加功能，获得道具时自动提示 | ✅ | 需要TorigoyaMZ_NotifyMessage |
 

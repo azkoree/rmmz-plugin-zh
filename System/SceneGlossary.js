@@ -513,158 +513,158 @@
  *  这个插件已经是你的了。
  */
 
-/*~struct~GlossaryData:ja
+/*~struct~GlossaryData:zh
  *
  * @param GlossaryType
- * @text 用語種別
- * @desc 用語種別です。<SG種別:n>で指定した用語が表示されます。
+ * @text 用语种类
+ * @desc 用语种类。显示通过<SG种类:n>指定的用语。
  * @default 1
  * @type number
  * @min 1
  *
  * @param CommandName
- * @text コマンド名称
- * @desc メニュー画面に表示されるコマンド名です。空にするとメニュー画面に表示されなくなります。
+ * @text 命令名称
+ * @desc 在菜单画面显示的命令名称。如果为空，则不会在菜单画面显示。
  * @default 用語辞典
  *
  * @param UseCategory
- * @text カテゴリ分類
- * @desc 用語をカテゴリごとに分けて表示します。
+ * @text 分类分类
+ * @desc 按分类分别显示用语。
  * @default false
  * @type boolean
  *
  * @param CommandSwitchId
- * @text 出現条件スイッチ
- * @desc 辞書コマンドの出現条件スイッチ番号です。0にすると無条件で表示されます。
+ * @text 出现条件开关
+ * @desc 辞典命令的出现条件开关编号。设置为0时无条件显示。
  * @default 0
  * @type switch
  *
  * @param BackPicture
- * @text 背景ピクチャ
- * @desc 背景として表示するピクチャ（/img/pictures/）を指定できます。
- * サイズは画面サイズに合わせて拡縮されます。拡張子、パス不要。
+ * @text 背景图片
+ * @desc 可以指定作为背景显示的图片（/img/pictures/）。
+ * 尺寸会根据画面大小自动缩放。不需要扩展名和路径。
  * @default
  * @require 1
  * @dir img/pictures/
  * @type file
  *
  * @param SelectAction
- * @text 選択時の動作
- * @desc 用語を選択したときの動作です。
+ * @text 选择时的动作
+ * @desc 选择用语时的动作。
  * @default 0
  * @type select
- * @option 使用不可
+ * @option 不可使用
  * @value 0
- * @option アイテム使用
+ * @option 物品使用
  * @value 1
- * @option スイッチ設定
+ * @option 开关设置
  * @value 2
  *
  * @param SelectSwitchId
- * @text 選択スイッチ番号
- * @desc 用語アイテムの選択時の動作がスイッチ設定の場合にONになるスイッチ番号です。キャンセルでOFFが設定されます。
+ * @text 选择开关编号
+ * @desc 用语物品的选择时动作为开关设置时变为ON的开关编号。取消时设置为OFF。
  * @default 0
  * @type switch
  * @parent SelectAction
  *
  * @param SelectVariableId
- * @text 選択用語変数番号
- * @desc 用語アイテムの選択時の動作がアイテム使用の場合にアイテムIDが設定される変数番号です。キャンセルで-1が設定されます。
+ * @text 选择用语变量编号
+ * @desc 用语物品的选择时动作为物品使用时设置物品ID的变量编号。取消时设置为-1。
  * @default 0
  * @type variable
  * @parent SelectAction
  *
  * @param ConfirmMessage
- * @text 確認メッセージ使用要否
- * @desc 用語アイテムを使用する際に確認メッセージが表示されるようになります。
+ * @text 确认消息使用与否
+ * @desc 使用用语物品时会显示确认消息。
  * @default false
  * @type boolean
  *
  * @param ConfirmUse
- * @text 確認_使う
- * @desc 確認メッセージで使う場合のメッセージです。
- * @default 使う
+ * @text 确认_使用
+ * @desc 确认消息中选择使用时的消息。
+ * @default 使用
  * @parent ConfirmMessage
  *
  * @param ConfirmNoUse
- * @text 確認_使わない
- * @desc 確認メッセージで使わない場合のメッセージです。
- * @default やめる
+ * @text 确认_不使用
+ * @desc 确认消息中选择不使用时的消息。
+ * @default 取消
  * @parent ConfirmMessage
  *
  * @param GlossaryHelp
- * @text 用語ヘルプ
- * @desc 用語リスト選択時のヘルプ画面に表示するテキストです。未指定の場合ウィンドウは非表示になります。(改行コード:\n)
+ * @text 用语帮助
+ * @desc 选择用语列表时在帮助画面显示的文本。未指定时窗口将隐藏。(换行代码:\n)
  * @default ゲーム中に登場する用語を解説しています。
  *
  * @param CategoryHelp
- * @text カテゴリヘルプ
- * @desc 用語カテゴリ選択時のヘルプ画面に表示するテキストです。(改行コード:\n)
- * @default カテゴリを選択してください。
+ * @text 分类帮助
+ * @desc 选择用语分类时在帮助画面显示的文本。(换行代码:\n)
+ * @default 请选择分类。
  * @parent GlossaryHelp
  *
  * @param ConfirmHelp
- * @text 確認ヘルプ
- * @desc 用語アイテムの選択確認時に表示するテキストです。指定しなかった場合、何も表示されません。(改行コード:\n)
+ * @text 确认帮助
+ * @desc 确认用语物品选择时显示的文本。未指定时不会显示任何内容。(换行代码:\n)
  * @default
  * @parent GlossaryHelp
  *
  * @param UsingHelp
- * @text 使用後ヘルプ
- * @desc 用語アイテムの使用後に表示するテキストです。指定しなかった場合、何も表示されません。(改行コード:\n)
+ * @text 使用后帮助
+ * @desc 用语物品使用后显示的文本。未指定时不会显示任何内容。(换行代码:\n)
  * @default
  * @parent GlossaryHelp
  *
  * @param CompleteView
- * @text 収集率表示
- * @desc カテゴリごとの収集率を表示します。コンプリートの目安です。
+ * @text 收集率显示
+ * @desc 显示各分类的收集率。是完成度的参考。
  * @default false
  * @type boolean
  *
  * @param CompleteMessage
- * @text 収集率メッセージ
- * @desc 収集率を表示する文言です。「%1」が収集率に変換されます。
- * @default 収集率 \c[2]%1\c[0] ％
+ * @text 收集率消息
+ * @desc 显示收集率的文字。「%1」会被替换为收集率。
+ * @default 收集率 \c[2]%1\c[0] ％
  * @parent CompleteView
  *
  * @param ShowingItemNumber
- * @text 所持数表示
- * @desc 用語集アイテムの所持数を表示します。
+ * @text 持有数显示
+ * @desc 显示用语集物品的持有数。
  * @default false
  * @type boolean
  *
  * @param UsableDefault
- * @text デフォルト使用可否
- * @desc 用語集アイテムの初期状態での使用可否です。プラグインコマンドから個別に使用可否を変更できます。
+ * @text 默认使用与否
+ * @desc 用语集物品初始状态下的使用与否。可以通过插件命令单独更改使用与否。
  * @default true
  * @type boolean
  *
  * @param UseItemHistory
- * @text 入手履歴を使用
- * @desc ONにすると一度入手した用語アイテムを失っても辞書には表示されたままになります。
+ * @text 使用获取历史
+ * @desc 设置为ON时，即使失去一次获取的用语物品，词典中也会继续显示。
  * @default false
  * @type boolean
  *
  * @param GlossaryListWidth
- * @text 用語集リスト横幅
- * @desc 用語集リストのウィンドウ横幅です。
+ * @text 用语集列表宽度
+ * @desc 用语集列表的窗口宽度。
  * @default 240
  * @type number
  *
  * @param VisibleItemNotYet
- * @text 未入手アイテムの表示
- * @desc 未入手アイテムを指定した名前（？？？等）で表示します。指定しない場合この機能は無効になります。
+ * @text 未获取物品的显示
+ * @desc 用指定的名称（？？？等）显示未获取的物品。未指定时此功能将无效。
  * @default
  *
  * @param HideIcon
- * @text アイコン非表示
- * @desc 用語アイテムのデータベース上の設定にかかわらず、アイコンを非表示にします。
+ * @text 图标隐藏
+ * @desc 无论用语物品在数据库中的设置如何，都将隐藏图标。
  * @default false
  * @type boolean
  *
  * @param CancelSwitchId
- * @text キャンセル時スイッチ
- * @desc 用語集画面でキャンセルしたときにONになるスイッチ番号です。
+ * @text 取消时开关
+ * @desc 在用语集画面取消时变为ON的开关编号。
  * @default 0
  * @type switch
  *

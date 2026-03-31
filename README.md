@@ -12,13 +12,33 @@
 
 ## 利用规约
 
-请参考原插件网站和插件说明给出的利用规约。
+请遵循原插件网站和插件说明给出的利用规约。
 
 ## 已汉化列表
+
+### [战斗 / Battle](https://github.com/azkoree/rmmz-plugin-zh/tree/main/Battle)
+
+和战斗机制、战斗表现等等相关的插件。
+
+- [**DynamicMotionMZ**](https://github.com/azkoree/rmmz-plugin-zh/blob/main/Battle/DynamicMotionMZ.js) + [**DynamicAnimationMZ**](https://github.com/azkoree/rmmz-plugin-zh/blob/main/Battle/DynamicAnimationMZ.js) 作者：砂川赳
+
+​	增强战斗的视觉表现，可以自由控制战斗动作和动画，两个插件都需要插入。作者发布页](https://newrpg.seesaa.net/article/477190310.html)提供了不少使用方法和范例。比较多，也许以后会翻，但目前不打算。插件可能仍然需要润色。
+
+### [事件 / Event](https://github.com/azkoree/rmmz-plugin-zh/tree/main/Event)
+
+跟事件处理有关的插件。
+
+- [**VariablePlus**](https://github.com/azkoree/rmmz-plugin-zh/blob/main/Event/Keke_VariablePlus.js) 作者：あわやまたな
+
+​	反正就是提升使用并行处理事件的情况下，减少变量改变而大幅刷新画面的频率，还可以给变量统一设定初始值，设定完全会不刷新画面的变量
 
 ### [菜单画面 / Menu](https://github.com/azkoree/rmmz-plugin-zh/tree/main/Menu)
 
 对主菜单画面进行各种各样的改造。
+
+- [**Blue_MenuRing**](https://github.com/azkoree/rmmz-plugin-zh/blob/main/Menu/Blue_MenuRing.js) 作者：Bluemoon
+
+​	另一种环形菜单，会在屏幕底部显示角色的状态，，还有一些说明写在了[itch](https://bluemooncoder.itch.io/ring-menu)（利用规约不允许按原样分发，那汉化后再分发应该也没问题吧……？）
 
 - [**Keke_MenuFreeSpace**](https://github.com/azkoree/rmmz-plugin-zh/blob/main/Menu/Keke_MenuFreeSpace.js) 作者：ケケー
 
@@ -48,7 +68,7 @@
 
 ​	将字符串作为图片显示在画面上，可以绘制窗口背景，需要前置PluginCommonBase
 
-- **[TorigoyaMZ_NotifyMessage ](https://github.com/azkoree/rmmz-plugin-zh/blob/main/Map/TorigoyaMZ_NotifyMessage.js)**作者：Ruたん
+- [**TorigoyaMZ_NotifyMessage** ](https://github.com/azkoree/rmmz-plugin-zh/blob/main/Map/TorigoyaMZ_NotifyMessage.js)作者：Ruたん
 
 ​	在画面显示通知信息，是个人比较喜欢的样式，需要[Torigoya_FrameTween](https://torigoya-plugin.rutan.dev/base/tween/)
 
@@ -108,7 +128,7 @@
 
 - **[SceneCustomMenu](https://github.com/azkoree/rmmz-plugin-zh/blob/main/System/SceneCustomMenu.js)** 作者：トリアコンタン
 
-​	自定义菜单创建插件，需要前置PluginCommonBase
+​	自定义菜单创建插件，需要前置PluginCommonBase。为方便使用，大部分注释标签使用英文版，但是英文版注释似乎版本比较落后，请以日语版注释为准
 
 - **[SceneGlossary](https://github.com/azkoree/rmmz-plugin-zh/blob/main/System/SceneGlossary.js)** 作者：トリアコンタン
 

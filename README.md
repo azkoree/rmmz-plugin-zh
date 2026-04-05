@@ -8,8 +8,6 @@
 
 本仓库汉化的插件基本都允许修改分发，付费/不允许分发插件只会提供参数和帮助文本的汉化，请自己替换
 
-
-
 ## 利用规约
 
 请遵循原插件网站和插件说明给出的利用规约。
@@ -22,15 +20,26 @@
 
 - [**DynamicMotionMZ**](https://github.com/azkoree/rmmz-plugin-zh/blob/main/Battle/DynamicMotionMZ.js) + [**DynamicAnimationMZ**](https://github.com/azkoree/rmmz-plugin-zh/blob/main/Battle/DynamicAnimationMZ.js) 作者：砂川赳
 
-​	增强战斗的视觉表现，可以自由控制战斗动作和动画，两个插件都需要插入。作者发布页](https://newrpg.seesaa.net/article/477190310.html)提供了不少使用方法和范例。比较多，也许以后会翻，但目前不打算。插件可能仍然需要润色。
+​	增强战斗的视觉表现，可以自由控制战斗动作和动画，两个插件都需要插入。[作者发布页](https://newrpg.seesaa.net/article/477190310.html)提供了不少使用方法和范例。比较多，也许以后会翻，但目前不打算。插件可能仍然需要润色。
+
+
+
+### [数据 / Data](https://github.com/azkoree/rmmz-plugin-zh/tree/main/Data)
+
+和数据库、开关变量这些有关的插件。
+
+
+- [**DynamicVariables**](https://github.com/azkoree/rmmz-plugin-zh/blob/main/Data/DynamicVariables.js) 作者：トリアコンタン
+
+	可以在开关或变量的名称处使用js脚本，让这一变量可以根据js脚本动态更新，实在不懂可以丢给ai让它给你解释）
+
+- [**VariablePlus**](https://github.com/azkoree/rmmz-plugin-zh/blob/main/Data/Keke_VariablePlus.js) 作者：あわやまたな
+
+	反正就是提升使用并行处理事件的情况下，减少变量改变而大幅刷新画面的频率，还可以给变量统一设定初始值，设定完全会不刷新画面的变量
 
 ### [事件 / Event](https://github.com/azkoree/rmmz-plugin-zh/tree/main/Event)
 
 跟事件处理有关的插件。
-
-- [**VariablePlus**](https://github.com/azkoree/rmmz-plugin-zh/blob/main/Event/Keke_VariablePlus.js) 作者：あわやまたな
-
-​	反正就是提升使用并行处理事件的情况下，减少变量改变而大幅刷新画面的频率，还可以给变量统一设定初始值，设定完全会不刷新画面的变量
 
 ### [菜单画面 / Menu](https://github.com/azkoree/rmmz-plugin-zh/tree/main/Menu)
 
@@ -128,21 +137,10 @@
 
 - **[SceneCustomMenu](https://github.com/azkoree/rmmz-plugin-zh/blob/main/System/SceneCustomMenu.js)** 作者：トリアコンタン
 
-​	自定义菜单创建插件，需要前置PluginCommonBase。为方便使用，大部分注释标签使用英文版，但是英文版注释似乎版本比较落后，请以日语版注释为准
+​	自定义菜单创建插件，需要前置PluginCommonBase。
+​	个人提示：容易和大改对话框的插件冲突，除非自定义界面中执行的公共事件永远不会用到【显示文本】指令
 
 - **[SceneGlossary](https://github.com/azkoree/rmmz-plugin-zh/blob/main/System/SceneGlossary.js)** 作者：トリアコンタン
 
-​	在游戏中实装一个用语辞典界面，支持自动检测词汇录入，需要前置PluginCommonBase
-
-## 关于投稿插件
-
-其实我不太懂用github（，好像是可以发discussions。如果发现了不错的rmmz插件，可以留言，但是原则上需要满足如下条件：
-
-- 必须可以在rmmz中使用，能不能兼容mv无所谓
-- 结构不会太过复杂
-- 不把@param当@text用（并非硬性要求，主要是这种翻译起来有点麻烦）
-- **利用规约明确允许修改分发**
-- **非付费/赞助专属插件**
-
-其实也可以只放注释翻译来规避风险，不过大伙肯定是希望即插即用对吧（
+​	在游戏中实装一个用语辞典界面，支持自动检测词汇录入，需要前置PluginCommonBase。为方便使用，大部分注释标签使用英文版，但是英文版注释似乎版本比较落后，请以日语版注释为准
 

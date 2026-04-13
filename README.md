@@ -8,6 +8,10 @@
 
 本仓库汉化的插件基本都允许修改分发，付费/不允许分发插件只会提供参数和帮助文本的汉化，请自己替换
 
+## 目前规划
+
+个人项目已经进入稳步开发阶段，本仓库暂时缓更。。
+
 ## 利用规约
 
 请遵循原插件网站和插件说明给出的利用规约。
@@ -104,6 +108,10 @@
 - **[NRP_MessageWindow](https://github.com/azkoree/rmmz-plugin-zh/blob/main/Message/NRP_MessageWindow.js)** 作者：砂川赳
 
   调整对话框的样式，添加遮罩等等
+  
+- **Text2Frame** 作者：kryptos_nv
+  
+  可以将对话文本的txt文件快速导入工程的工具插件，不是从文件中读取，而是直接导入到你的工程中！**目前还没有翻译插件本体，但是已经翻译了readme，可以参考使用步骤。请见[readme](https://github.com/azkoree/rmmz-plugin-zh/blob/main/docs/Text2Frame.md)**
 
 
 ### [外观美化 / Visual](https://github.com/azkoree/rmmz-plugin-zh/tree/main/Visual)

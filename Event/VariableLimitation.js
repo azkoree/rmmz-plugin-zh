@@ -1,0 +1,196 @@
+/*=============================================================================
+ VariableLimitation.js
+----------------------------------------------------------------------------
+ (C)2021 Triacontane
+ This software is released under the MIT License.
+ http://opensource.org/licenses/mit-license.php
+----------------------------------------------------------------------------
+ Version
+ 1.2.0 2026/04/27 プラグインパラメータに識別用のラベル項目を追加
+ 1.1.0 2024/10/13 限界値に適用条件のスイッチを追加
+ 1.0.0 2021/12/31 初版
+----------------------------------------------------------------------------
+ [Blog]   : https://triacontane.blogspot.jp/
+ [Twitter]: https://twitter.com/triacontane/
+ [GitHub] : https://github.com/triacontane/
+=============================================================================*/
+/*:zh
+* @plugindesc 变量界限值设定插件
+ * @target MZ
+ * @url https://github.com/triacontane/RPGMakerMV/tree/mz_master/VariableLimitation.js
+ * @base PluginCommonBase
+ * @orderAfter PluginCommonBase
+ * @author トリアコンタン
+ *
+ * @param list
+ * @text 设定列表
+ * @desc 想要设置界限值的变量列表。同一个变量不能重复设置。
+ * @default []
+ * @type struct<Limitation>[]
+ *
+ * @help VariableLimitation.js
+ *
+ * 设定变量的界限值（最小值和最大值）。
+ * 防止将指定的变量值被设置为超出最大值或小于最小值。
+ * 
+ *　使用此插件需要基础插件『PluginCommonBase.js』。
+ * 『PluginCommonBase.js』存储在RPG制作器MZ安装文件夹下的
+ * 以下文件夹中。
+ * dlc/BasicResources/plugins/official
+ * 
+ *使用条款：
+ * 可以在未经作者许可的情况下修改、再分发，使用形式（商用、18禁使用等）
+ * 也没有限制。
+ * 这个插件已经是你的了。
+ * 
+ */
+
+/*~struct~Limitation:zh
+ *
+ * @param label
+ * @text 标签
+ * @desc 用于标记的标签，不会影响程序运行，可以随意设置。
+ * @type string
+ *
+ * @param variableId
+ * @text 变量编号
+ * @desc 想要设置界限值的的变量的编号。
+ * @type variable
+ * @default 1
+ *
+ * @param min
+ * @text 最小值
+ * @desc 最小值。
+ * @type number
+ * @default 0
+ * @min -9999999999
+ *
+ * @param max
+ * @text 最大值
+ * @desc 最大值。
+ * @type number
+ * @default 0
+ * @min -9999999999
+ *
+ * @param conditionSwitch
+ * @text 条件开关
+ * @desc 开关为ON时，才会启用界限值。如果在开关OFF时变量值超过了界限值，此时打开开关，变量值保持不变。
+ * @default 0
+ * @type switch
+ *
+ */
+/*:
+ * @plugindesc 変数の限界値設定プラグイン
+ * @target MZ
+ * @url https://github.com/triacontane/RPGMakerMV/tree/mz_master/VariableLimitation.js
+ * @base PluginCommonBase
+ * @orderAfter PluginCommonBase
+ * @author トリアコンタン
+ *
+ * @param list
+ * @text 設定リスト
+ * @desc 限界値を設定したい変数の一覧です。同一の変数を複数指定することはできません。
+ * @default []
+ * @type struct<Limitation>[]
+ *
+ * @help VariableLimitation.js
+ *
+ * 変数に限界値（最小値と最大値）を設定できます。
+ * 指定すると変数値が、最小値より小さい値あるいは最大値より大きい値に
+ * 設定されなくなります。
+ *　
+ * このプラグインの利用にはベースプラグイン『PluginCommonBase.js』が必要です。
+ * 『PluginCommonBase.js』は、RPGツクールMZのインストールフォルダ配下の
+ * 以下のフォルダに格納されています。
+ * dlc/BasicResources/plugins/official
+ *
+ * 利用規約：
+ *  作者に無断で改変、再配布が可能で、利用形態（商用、18禁利用等）
+ *  についても制限はありません。
+ *  このプラグインはもうあなたのものです。
+ */
+
+/*~struct~Limitation:
+ *
+ * @param label
+ * @text ラベル
+ * @desc 識別のためのラベルです。プログラム上の意味はないので好きな値を設定してください。
+ * @type string
+ *
+ * @param variableId
+ * @text 変数番号
+ * @desc 最小値、最大値を設定したい変数の番号です。
+ * @type variable
+ * @default 1
+ *
+ * @param min
+ * @text 最小値
+ * @desc 最小値です。
+ * @type number
+ * @default 0
+ * @min -9999999999
+ *
+ * @param max
+ * @text 最大値
+ * @desc 最大値です。
+ * @type number
+ * @default 0
+ * @min -9999999999
+ *
+ * @param conditionSwitch
+ * @text 条件スイッチ
+ * @desc スイッチがONのときのみ限界値を適用します。OFFにときに限界値を超える値を指定してからONにしても値はそのままです。
+ * @default 0
+ * @type switch
+ *
+ */
+
+(()=> {
+    'use strict';
+    const script = document.currentScript;
+    const param = PluginManagerEx.createParameter(script);
+    if (!Array.isArray(param.list)) {
+        PluginManagerEx.throwError('Parameter invalid', script);
+        return;
+    }
+    
+    const variableMap = new Map();
+    param.list.forEach(function(item) {
+        variableMap.set(item.variableId, item);
+    });
+
+    const _DataManager_createGameObjects = DataManager.createGameObjects;
+    DataManager.createGameObjects = function() {
+        _DataManager_createGameObjects.apply(this, arguments);
+        $gameVariables.applyLimitations();
+    };
+
+    const _DataManager_extractSaveContents = DataManager.extractSaveContents;
+    DataManager.extractSaveContents = function(contents) {
+        _DataManager_extractSaveContents.apply(this, arguments);
+        $gameVariables.applyLimitations();
+    };
+
+    Game_Variables.prototype.applyLimitations = function() {
+        param.list.forEach(function(item) {
+            this.setValue(item.variableId, this.value(item.variableId));
+        }, this);
+    };
+
+    const _Game_Variables_setValue = Game_Variables.prototype.setValue;
+    Game_Variables.prototype.setValue = function(variableId, value) {
+        arguments[1] = this.applyLimitation(variableId, value);
+        _Game_Variables_setValue.apply(this, arguments);
+    };
+
+    Game_Variables.prototype.applyLimitation = function(variableId, value) {
+        if (variableMap.has(variableId) && !isNaN(value)) {
+            const item = variableMap.get(variableId);
+            if (item.conditionSwitch > 0 && !$gameSwitches.value(item.conditionSwitch)) {
+                return value;
+            }
+            return value.clamp(item.min, item.max);
+        }
+        return value;
+    };
+})();

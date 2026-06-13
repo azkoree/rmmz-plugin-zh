@@ -12,6 +12,10 @@
 
 个人项目已经进入稳步开发阶段，本仓库暂时缓更。。
 
+## 广告
+
+如果你也想着手汉化插件，你可以来试试[azkoree/plugin-desc-editor: 用于读取RMMZ插件注释并导出翻译的工具，vibe-coding警告](https://github.com/azkoree/plugin-desc-editor)
+
 ## 利用规约
 
 请遵循原插件网站和插件说明给出的利用规约。
@@ -27,13 +31,9 @@
 
 和数据库、开关变量这些有关的插件。
 
-
-
 ### [事件 / Event](https://github.com/azkoree/rmmz-plugin-zh/tree/main/Event/Event.md)
 
-跟事件处理有关的插件。
-
-（对，目前还没有）
+跟事件处理有关的插件，开关变量控制之类的也在这里。
 
 ### [菜单画面 / Menu](https://github.com/azkoree/rmmz-plugin-zh/tree/main/Menu/Menu.md)
 
@@ -54,5 +54,4 @@
 ### [独立系统 / System](https://github.com/azkoree/rmmz-plugin-zh/tree/main/System/System.md)
 
 引入一个新的独立系统的插件。
-
 

@@ -1,3 +1,9 @@
+[**CommonWithParameter**](https://github.com/azkoree/rmmz-plugin-zh/blob/main/Event/CommonWithParameter.js) 
+
+作者：トリアコンタン
+
+可以调用公共事件时将变量作为参数传递，需要前置PluginCommonBase
+
 [**HalfMove**](https://github.com/azkoree/rmmz-plugin-zh/blob/main/Event/HalfMove.js) 
 
 作者：トリアコンタン

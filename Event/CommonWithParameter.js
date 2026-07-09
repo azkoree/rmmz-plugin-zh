@@ -1,0 +1,218 @@
+/*=============================================================================
+ CommonWithParameter.js
+----------------------------------------------------------------------------
+ (C)2023 Triacontane
+ This software is released under the MIT License.
+ http://opensource.org/licenses/mit-license.php
+----------------------------------------------------------------------------
+ Version
+ 1.4.1 2025/01/29 プラグインコマンドの引数パラメータの型を複数行テキストに変更
+ 1.4.0 2025/01/29 プラグインパラメータに識別用のラベルを追加
+ 1.3.0 2024/04/01 すべてのコモンイベントで共通の引数を定義できる機能を追加
+ 1.2.0 2023/08/11 メッセージコモンプラグインと連携して、引数付きコモンを制御文字から呼べる機能を追加
+ 1.1.0 2023/05/24 名称による検索を完全一致と部分一致の2種類に対応
+ 1.0.0 2023/03/12 初版
+----------------------------------------------------------------------------
+ [Blog]   : https://triacontane.blogspot.jp/
+ [Twitter]: https://twitter.com/triacontane/
+ [GitHub] : https://github.com/triacontane/
+=============================================================================*/
+/*:zh
+* @plugindesc 带参数调用公共事件插件
+ * @target MZ
+ * @url https://github.com/triacontane/RPGMakerMV/tree/mz_master/CommonWithParameter.js
+ * @base PluginCommonBase
+ * @orderAfter PluginCommonBase
+ * @author トリアコンタン
+ *
+ * @param likeSearch
+ * @text 名称部分匹配搜索
+ * @desc 在指定按名称调用的通用事件时，将使用部分匹配搜索。
+ * @default true
+ * @type boolean
+ *
+ * @param arguments
+ * @text 参数列表
+ * @desc 注册公共事件的参数信息。
+ * @default []
+ * @type struct<CommonArguments>[]
+ *
+ * @command CALL
+ * @text 调用公共事件
+ * @desc 専用のパラメータを指定してコモンイベントを呼び出します。
+ * 调用设定了专用参数的公共事件。
+ * @text 公共事件ID
+ * @desc 调用的公共事件。想要以名称调用时请在文本框输入名称。
+ * @default 0
+ * @type common_event
+ *
+ * @arg parameters
+ * @text 参数
+ * @desc 此处指定的值将存储在插件参数的参数信息所指定的变量中。
+ * @default []
+ * @type multiline_string[]
+ *
+ * @help CommonWithParameter.js
+ *可以带参数调用公共事件。
+ * 在插件参数中注册用于传递参数的变量编号，
+ * 然后通过专用的插件指令指定参数来调用公共事件。
+ * 
+ *也可以为所有公共事件定义通用的参数。
+ * 此时，请指定公共事件 ID 为 0，
+ * 并将该数据定义在列表的最下方。
+ * 
+ *此外，还可以根据公共事件的名称来调用公共事件。
+ * 按名称调用公共事件时，采用名称的部分匹配搜索。
+ * 
+ *　使用本插件需要基础插件 PluginCommonBase.js。
+ * PluginCommonBase.js 存放在 RPG Maker MZ 安装文件夹下的以下文件夹中：
+ * dlc/BasicResources/plugins/official
+ * 
+ * 使用条款：
+ *可在未经作者许可的情况下进行修改、再分发，使用形式（商业用途、18禁用途等）
+ * 也无任何限制。
+ * 这个插件已经是属于你的了。
+ */
+
+/*~struct~CommonArguments:zh
+ *
+ * @text 标签
+ * @desc 用于分辨的标签。没有特别的功能，可以取一个易于区分的名称。
+ * @desc 識別用のラベルです。特に用途はないので判別しやすい名前を付けてください。
+ * @default
+ * @type string
+ *
+ * @text 公共事件ID
+ * @desc 要注册参数信息的公共事件ID。指定为0则表示该变量在所有公共事件之间共享。
+ * @desc 引数情報を登録するコモンイベントのIDです。0を指定すると全コモンイベントで共通で使われる変数になります。
+ * @default 0
+ * @type common_event
+ *
+ * @text 存储参数的变量
+ * @desc 变量列表，调用时会将值存储在其中。
+ * @desc 呼び出し時に値が格納される変数番号の一覧です。
+ * @default []
+ * @type variable[]
+ *
+ */
+/*:
+ * @plugindesc 引数付きコモン呼び出しプラグイン
+ * @target MZ
+ * @url https://github.com/triacontane/RPGMakerMV/tree/mz_master/CommonWithParameter.js
+ * @base PluginCommonBase
+ * @orderAfter PluginCommonBase
+ * @author トリアコンタン
+ *
+ * @param likeSearch
+ * @text 名称部分一致検索
+ * @desc 名称で呼び出すコモンイベントを指定するとき、部分一致検索になります。
+ * @default true
+ * @type boolean
+ *
+ * @param arguments
+ * @text 引数リスト
+ * @desc コモンイベントの引数情報を登録します。
+ * @default []
+ * @type struct<CommonArguments>[]
+ *
+ * @command CALL
+ * @text コモンイベント呼び出し
+ * @desc 専用のパラメータを指定してコモンイベントを呼び出します。
+ *
+ * @arg id
+ * @text コモンイベントID
+ * @desc 呼び出す対象のコモンイベントIDです。名称で呼び出したい場合はテキストタブから名称を入力します。
+ * @default 0
+ * @type common_event
+ *
+ * @arg parameters
+ * @text パラメータ
+ * @desc プラグインパラメータの引数情報で指定した変数にここで指定した値が格納されます。
+ * @default []
+ * @type multiline_string[]
+ *
+ * @help CommonWithParameter.js
+ *
+ * コモンイベントを引数付きで呼び出すことができます。
+ * プラグインパラメータで引数が渡される変数番号を登録し、
+ * 専用のプラグインコマンドからパラメータを指定してコモンイベントを呼びます。
+ *
+ * ずべてのコモンイベントで共通の引数を定義することも可能です。
+ * その場合、コモンイベントIDに0を指定したうえで、
+ * そのデータをリストの一番下に定義してください。
+ *
+ * また、コモンイベント名称を基準にコモンイベントを呼ぶことも可能です。
+ * 名称によるコモンイベント呼び出しは名称の部分一致検索になります。
+ *　
+ * このプラグインの利用にはベースプラグイン『PluginCommonBase.js』が必要です。
+ * 『PluginCommonBase.js』は、RPGツクールMZのインストールフォルダ配下の
+ * 以下のフォルダに格納されています。
+ * dlc/BasicResources/plugins/official
+ *
+ * 利用規約：
+ *  作者に無断で改変、再配布が可能で、利用形態（商用、18禁利用等）
+ *  についても制限はありません。
+ *  このプラグインはもうあなたのものです。
+ */
+
+/*~struct~CommonArguments:
+ *
+ * @param label
+ * @text ラベル
+ * @desc 識別用のラベルです。特に用途はないので判別しやすい名前を付けてください。
+ * @default
+ * @type string
+ *
+ * @param id
+ * @text コモンイベントID
+ * @desc 引数情報を登録するコモンイベントのIDです。0を指定すると全コモンイベントで共通で使われる変数になります。
+ * @default 0
+ * @type common_event
+ *
+ * @param variables
+ * @text 引数が格納される変数
+ * @desc 呼び出し時に値が格納される変数番号の一覧です。
+ * @default []
+ * @type variable[]
+ *
+ */
+
+(() => {
+    'use strict';
+    const script = document.currentScript;
+    const param = PluginManagerEx.createParameter(script);
+    if (!param.arguments) {
+        param.arguments = [];
+    }
+
+    PluginManagerEx.registerCommand(script, 'CALL', function(args) {
+        const commonEvent = DataManager.setupCommonParameter(args.id, args.parameters);
+        const eventId = this.isOnCurrentMap() ? this._eventId : 0;
+        this.setupChild(commonEvent.list, eventId);
+    });
+
+    DataManager.setupCommonParameter = function(idValue, parameters) {
+        const commonEvent = this.findCommonEvent(idValue, String(idValue));
+        if (!commonEvent) {
+            PluginManagerEx.throwError('Common event is not found. id=' + idValue, script);
+        }
+        const id = $dataCommonEvents.findIndex(event => event === commonEvent);
+        const variables = param.arguments.find(item => item.id === id || item.id === 0)?.variables || [];
+        variables.forEach((variableId, index) => {
+            if (parameters[index] !== undefined) {
+                $gameVariables.setValue(variableId, parameters[index]);
+            } else {
+                $gameVariables.setValue(variableId, 0);
+            }
+        });
+        return commonEvent;
+    };
+
+    DataManager.findCommonEvent = function(id, name) {
+        if ($dataCommonEvents[id]) {
+            return $dataCommonEvents[id];
+        } else {
+            return $dataCommonEvents.find(event => param.likeSearch ? event?.name.includes(name) : event?.name === name);
+        }
+    }
+})();

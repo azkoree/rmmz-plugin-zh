@@ -146,7 +146,7 @@ this.event().applyPopupSetting();
 @param DefaultPopupParameter
 @text 默认弹窗参数
 @type struct<PopupParameter>
-@default {"BalloonId":"0","IconNumber":"0","ImageFileName":"","WindowText":"","WindowTextFontSize":"0","WindowTextFontFace":"","WindowSkinFileName ":""}
+@default {"BalloonId":"0","IconNumber":"0","ImageFileName":"","WindowText":"","WindowTextFontSize":"0","WindowTextFontFace":"","WindowSkinFileName":""}
 @desc
 指定默认的弹窗参数。
 */
